@@ -1,0 +1,7 @@
+flask
+flask-cors
+gym
+stable-baselines3
+scikit-learn
+numpy
+

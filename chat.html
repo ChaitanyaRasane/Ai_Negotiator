@@ -1,0 +1,113 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chatbot</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    #chat-box { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: scroll; }
+    .user { color: blue; font-weight: bold; }
+    .bot { color: green; margin-left: 20px; }
+    input[type="text"] { width: 80%; padding: 10px; margin-top: 10px; }
+    button { padding: 10px; }
+  </style>
+</head>
+<body>
+
+<h2>🤖 AI Negotiation Chatbot</h2>
+<div id="chat-box"></div>
+<input type="text" id="user-input" placeholder="Type your offer...">
+<button onclick="sendMessage()">Send</button>
+
+<script>
+const basePrice = 700000;
+
+function appendMessage(text, sender) {
+  const box = document.getElementById("chat-box");
+  const msg = document.createElement("div");
+  msg.className = sender;
+  msg.innerText = (sender === 'user' ? "You: " : "Bot: ") + text;
+  box.appendChild(msg);
+  box.scrollTop = box.scrollHeight;
+}
+
+async function sendMessage() {
+  const input = document.getElementById("user-input");
+  const message = input.value.trim();
+  if (!message) return;
+  appendMessage(message, "user");
+  input.value = "";
+
+  const res = await fetch("http://localhost:5000/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: message, predicted_price: basePrice })
+  });
+
+  const data = await res.json();
+  appendMessage(data.response, "bot");
+}
+</script>
+
+</body>
+</html> -->
+
+
+
+
+
+## ai-engine/chat.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chatbot</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    #chat-box { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: scroll; }
+    .user { color: blue; font-weight: bold; }
+    .bot { color: green; margin-left: 20px; }
+    input[type="text"] { width: 80%; padding: 10px; margin-top: 10px; }
+    button { padding: 10px; }
+  </style>
+</head>
+<body>
+
+<h2>🤖 AI Negotiation Chatbot</h2>
+<div id="chat-box"></div>
+<input type="text" id="user-input" placeholder="Type your offer...">
+<button onclick="sendMessage()">Send</button>
+
+<script>
+const basePrice = 700000;
+
+function appendMessage(text, sender) {
+  const box = document.getElementById("chat-box");
+  const msg = document.createElement("div");
+  msg.className = sender;
+  msg.innerText = (sender === 'user' ? "You: " : "Bot: ") + text;
+  box.appendChild(msg);
+  box.scrollTop = box.scrollHeight;
+}
+
+async function sendMessage() {
+  const input = document.getElementById("user-input");
+  const message = input.value.trim();
+  if (!message) return;
+  appendMessage(message, "user");
+  input.value = "";
+
+  const res = await fetch("http://localhost:5000/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: message, predicted_price: basePrice })
+  });
+
+  const data = await res.json();
+  appendMessage(data.response, "bot");
+}
+</script>
+
+</body>
+</html>
